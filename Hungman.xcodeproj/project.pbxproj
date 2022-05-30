@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C31F27B27AD512100817CA9 /* pvz1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7C31F27A27AD512100817CA9 /* pvz1.txt */; };
-		7C5FB860283D038D00E9C65C /* LetterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FB85E283D038D00E9C65C /* LetterButtonView.swift */; };
+		7C5FB860283D038D00E9C65C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5FB85E283D038D00E9C65C /* KeyboardView.swift */; };
 		7C5FB863283D378F00E9C65C /* alphabet.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7C5FB862283D378F00E9C65C /* alphabet.txt */; };
 		7C74A94E27A42CD000D9B5E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C74A94D27A42CD000D9B5E4 /* AppDelegate.swift */; };
 		7C74A95027A42CD000D9B5E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C74A94F27A42CD000D9B5E4 /* SceneDelegate.swift */; };
@@ -16,11 +16,15 @@
 		7C74A95527A42CD000D9B5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C74A95327A42CD000D9B5E4 /* Main.storyboard */; };
 		7C74A95727A42CD300D9B5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C74A95627A42CD300D9B5E4 /* Assets.xcassets */; };
 		7C74A95A27A42CD300D9B5E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C74A95827A42CD300D9B5E4 /* LaunchScreen.storyboard */; };
+		7C8C55812843FA4E00C80FAF /* HungmanBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8C55802843FA4E00C80FAF /* HungmanBrain.swift */; };
+		7CA04DAA283FA4CB0071472D /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA04DA9283FA4CB0071472D /* KeyboardView.xib */; };
+		7CA04DAF283FB7790071472D /* LetterButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA04DAD283FB7790071472D /* LetterButtonCell.swift */; };
+		7CA04DB0283FB7790071472D /* LetterButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA04DAE283FB7790071472D /* LetterButtonCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C31F27A27AD512100817CA9 /* pvz1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pvz1.txt; sourceTree = "<group>"; };
-		7C5FB85E283D038D00E9C65C /* LetterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonView.swift; sourceTree = "<group>"; };
+		7C5FB85E283D038D00E9C65C /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		7C5FB862283D378F00E9C65C /* alphabet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alphabet.txt; sourceTree = "<group>"; };
 		7C74A94A27A42CD000D9B5E4 /* Hungman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hungman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C74A94D27A42CD000D9B5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +34,10 @@
 		7C74A95627A42CD300D9B5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C74A95927A42CD300D9B5E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C74A95B27A42CD300D9B5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C8C55802843FA4E00C80FAF /* HungmanBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HungmanBrain.swift; sourceTree = "<group>"; };
+		7CA04DA9283FA4CB0071472D /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		7CA04DAD283FB7790071472D /* LetterButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonCell.swift; sourceTree = "<group>"; };
+		7CA04DAE283FB7790071472D /* LetterButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LetterButtonCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +72,9 @@
 			children = (
 				7C74A94D27A42CD000D9B5E4 /* AppDelegate.swift */,
 				7C74A94F27A42CD000D9B5E4 /* SceneDelegate.swift */,
-				7C74A95127A42CD000D9B5E4 /* ViewController.swift */,
-				7C74A95327A42CD000D9B5E4 /* Main.storyboard */,
-				7C5FB85E283D038D00E9C65C /* LetterButtonView.swift */,
+				7C8C55822843FA5600C80FAF /* Model */,
+				7C8C55832843FA6B00C80FAF /* View */,
+				7C8C55852843FAC500C80FAF /* Controller */,
 				7C74A95627A42CD300D9B5E4 /* Assets.xcassets */,
 				7C74A95827A42CD300D9B5E4 /* LaunchScreen.storyboard */,
 				7C74A95B27A42CD300D9B5E4 /* Info.plist */,
@@ -74,6 +82,42 @@
 				7C5FB862283D378F00E9C65C /* alphabet.txt */,
 			);
 			path = Hungman;
+			sourceTree = "<group>";
+		};
+		7C8C55822843FA5600C80FAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C8C55802843FA4E00C80FAF /* HungmanBrain.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7C8C55832843FA6B00C80FAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C74A95327A42CD000D9B5E4 /* Main.storyboard */,
+				7CA04DA9283FA4CB0071472D /* KeyboardView.xib */,
+				7CA04DAE283FB7790071472D /* LetterButtonCell.xib */,
+				7C8C55842843FA9000C80FAF /* Class */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C8C55842843FA9000C80FAF /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				7C5FB85E283D038D00E9C65C /* KeyboardView.swift */,
+				7CA04DAD283FB7790071472D /* LetterButtonCell.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		7C8C55852843FAC500C80FAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C74A95127A42CD000D9B5E4 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +183,8 @@
 				7C74A95527A42CD000D9B5E4 /* Main.storyboard in Resources */,
 				7C5FB863283D378F00E9C65C /* alphabet.txt in Resources */,
 				7C31F27B27AD512100817CA9 /* pvz1.txt in Resources */,
+				7CA04DAA283FA4CB0071472D /* KeyboardView.xib in Resources */,
+				7CA04DB0283FB7790071472D /* LetterButtonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,10 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C5FB860283D038D00E9C65C /* LetterButtonView.swift in Sources */,
+				7CA04DAF283FB7790071472D /* LetterButtonCell.swift in Sources */,
+				7C5FB860283D038D00E9C65C /* KeyboardView.swift in Sources */,
 				7C74A95227A42CD000D9B5E4 /* ViewController.swift in Sources */,
 				7C74A94E27A42CD000D9B5E4 /* AppDelegate.swift in Sources */,
 				7C74A95027A42CD000D9B5E4 /* SceneDelegate.swift in Sources */,
+				7C8C55812843FA4E00C80FAF /* HungmanBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
