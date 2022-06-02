@@ -11,91 +11,77 @@ class ViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var wordLabel: UILabel!
-
-    @IBOutlet var keyboardView: KeyboardView!
+    @IBOutlet var usedLettersLabel: UILabel!
     
     var hungmanBrain = HungmanBrain()
-
+    
     var hungImage = UIImage(named: "0")
-
+    
     var wrongAnswers = 0 {
         didSet {
             hungImage = UIImage(named: "\(wrongAnswers)")
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imageView.image = hungImage
         
         hungmanBrain.startGame()
-        let marks = String(repeating: "_ ", count: hungmanBrain.wordToGuess.count)
-        wordLabel.text = marks
-//        NSLayoutConstraint.activate([
-//            wordLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 150),
-//            wordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            currentAnswer.topAnchor.constraint(equalTo: wordLabel.bottomAnchor, constant: 50),
-//            currentAnswer.centerXAnchor.constraint(equalTo: wordLabel.centerXAnchor),
-//            currentAnswer.heightAnchor.constraint(equalToConstant: 44),
-//            submitButton.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor, constant: 20),
-//            submitButton.centerXAnchor.constraint(equalTo: currentAnswer.centerXAnchor),
-//            submitButton.heightAnchor.constraint(equalToConstant: 44)
-//            ])
+        wordLabel.text = hungmanBrain.marks
     }
-    // Ending could be different
+    
+    @IBAction func letterButtonTapped(_ sender: UIButton) {
+        let btnString = hungmanBrain.letterBits[sender.tag]
+        
+        // if tapped letter isn't the same
+        if !hungmanBrain.usedLetters.contains(btnString) {
+            hungmanBrain.usedLetters.append(btnString)
+            
+            hungmanBrain.letterCheckUp()
+            wordLabel.text = hungmanBrain.shownWord
+            
+            // if letter is nor the letter in the word to guess:
+            if !hungmanBrain.lettersToGuess.contains(btnString) {
+                wrongAnswers += 1
+                let arrayLet = hungmanBrain.usedLetters.map {$0}.compactMap({$0}).joined(separator: " ")
+                usedLettersLabel.text = arrayLet.uppercased()
+            }
+            imageView.image = hungImage
+        }
+        
+        if hungmanBrain.shownWord == hungmanBrain.wordToGuess.uppercased() {
+            winGame()
+        } else if wrongAnswers == 7 {
+            looseGame()
+        }
+    }
+    
+    func resetGame() {
+        hungmanBrain.startGame()
+        wrongAnswers = 0
+        imageView.image = hungImage
+        wordLabel.text = hungmanBrain.marks
+        usedLettersLabel.text = ""
+    }
+    
     func looseGame() {
-        let ac = UIAlertController(title: "GAME OVER", message: "You are a hanged", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        let ac = UIAlertController(title: "GAME OVER", message: "You are a dead", preferredStyle: .alert)
+        //        ac.addAction(UIAlertAction(title: "OK", style: .default))
         ac.addAction(UIAlertAction(title: "Try another", style: .default, handler: { [weak self] action in
-            self?.hungmanBrain.startGame()
-            self?.wrongAnswers = 0
+            self?.resetGame()
         }))
         present(ac, animated: true)
     }
     
     func winGame() {
-        let ac = UIAlertController(title: "Congratulation", message: "You guessed correctly", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Congratulation", message: "You are alive!", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Try another", style: .default, handler: { [weak self] action in
-            self?.hungmanBrain.startGame()
-            self?.wrongAnswers = 0
+            self?.resetGame()
         }))
         present(ac, animated: true)
     }
-    
 }
 
 
-
-extension KeyboardView: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        hungmanBrain.letterBits.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LetterButtonCell", for: indexPath) as? LetterButtonCell else {
-            fatalError("Unable to dequeue LetterButtonCell.")
-        }
-        cell.button.setTitle(hungmanBrain.letterBits[indexPath.item], for: .normal)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let btnString = String(describing: collectionView.cellForItem(at: indexPath))
-        hungmanBrain.usedLetters.append(btnString)
-        hungmanBrain.letterCheckUp()
-        mainView.wordLabel.text = hungmanBrain.shownWord
-        
-        if !hungmanBrain.lettersToGuess.contains(btnString) {
-            mainView.wrongAnswers += 1
-               }
-        mainView.imageView.image = mainView.hungImage
-        
-        if hungmanBrain.shownWord == hungmanBrain.wordToGuess.uppercased() {
-            mainView.winGame()
-        } else if mainView.wrongAnswers == 7 {
-            mainView.looseGame()
-                }
-    }
-}

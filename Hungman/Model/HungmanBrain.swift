@@ -13,6 +13,7 @@ struct HungmanBrain {
     var wordToGuess = ""
     var lettersToGuess = [String]()
     var shownWord = ""
+    var marks: String = ""
     var usedLetters = [String]()
     var usedWords = [String]()
     
@@ -23,6 +24,7 @@ struct HungmanBrain {
                 let bits = alphabetContents.components(separatedBy: ", ")
                 
                 letterBits += bits
+                print(letterBits)
             }
         }
     }
@@ -31,6 +33,7 @@ struct HungmanBrain {
         if let hungmanWordsURL = Bundle.main.url(forResource: "pvz1", withExtension: "txt") {
             if let startWords = try? String(contentsOf: hungmanWordsURL) {
                 gameWords = startWords.components(separatedBy: "\n")
+                gameWords.removeLast()
                 
                 print(gameWords)
             }
@@ -52,6 +55,8 @@ struct HungmanBrain {
         lettersToGuess.removeAll()
 
         wordToGuess = gameWords.randomElement()!
+        
+        marks = String(repeating: "_ ", count: wordToGuess.count)
         
         usedWords.append(wordToGuess)
         if let index = gameWords.firstIndex(of: wordToGuess){
